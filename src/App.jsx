@@ -8,11 +8,20 @@ function App() {
     .then((res)=>res.json())
     .then((data)=>{setProducts(data)})
   },[])
-  console.log(products[0]);
   
   return (
     <>
-      <App products={products} />
+      {
+        products.map((product,i)=>{
+          <div key={i}>
+            <p>{product.id}</p>
+            <p>{product.title}</p>
+            <p>{product.price}</p>
+            <p>{product.description}</p>
+            <p>{product.category.name}</p>
+          </div>
+        })
+      }
     </>
   )
 }
